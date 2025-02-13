@@ -3,15 +3,8 @@ import User from '../models/userModel.js';
 // Create a new user
 export const createUser = async (req, res) => {
     try {
-        const { firstName, lastName, email, message } = req.body;
-
-        // // Check if email already exists
-        // const existingUser = await User.findOne({ email });
-        // if (existingUser) {
-        //     return res.status(400).json({ message: 'Email already exists' });
-        // }
-
-        const newUser = new User({ firstName, lastName, email, message });
+        const { firstName, lastName, emailtext, message } = req.body;
+        const newUser = new User({ firstName, lastName, emailtext, message });
         await newUser.save();
         res.status(201).json({ message: 'User created successfully', user: newUser });
     } catch (error) {
@@ -45,10 +38,10 @@ export const getUserById = async (req, res) => {
 // Update user by ID
 export const updateUser = async (req, res) => {
     try {
-        const { firstName, lastName, email, message } = req.body;
+        const { firstName, lastName, emailtext, message } = req.body;
         const updatedUser = await User.findByIdAndUpdate(
             req.params.id,
-            { firstName, lastName, email, message, updatedAt: Date.now() },
+            { firstName, lastName, emailtext, message, updatedAt: Date.now() },
             { new: true }
         );
         if (!updatedUser) {
