@@ -5,11 +5,11 @@ export const createUser = async (req, res) => {
     try {
         const { firstName, lastName, email, message } = req.body;
 
-        // Check if email already exists
-        const existingUser = await User.findOne({ email });
-        if (existingUser) {
-            return res.status(400).json({ message: 'Email already exists' });
-        }
+        // // Check if email already exists
+        // const existingUser = await User.findOne({ email });
+        // if (existingUser) {
+        //     return res.status(400).json({ message: 'Email already exists' });
+        // }
 
         const newUser = new User({ firstName, lastName, email, message });
         await newUser.save();
