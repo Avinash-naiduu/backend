@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     // Step 1: Basic Details
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
-    emailtext: { type: String},
+    email: { type: String},
     message: { type: String, required: true },
 
     // Timestamps
